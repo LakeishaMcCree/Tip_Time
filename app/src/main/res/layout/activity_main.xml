@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/cost_of_service"
         android:inputType="numberDecimal"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
