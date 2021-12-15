@@ -6,7 +6,7 @@ import com.example.tiptime.databinding.ActivityMainBinding
 import java.text.NumberFormat
 
 class MainActivity : AppCompatActivity() {
-   lateinit var binding: ActivityMainBinding
+   private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
 
     //helper method
-    fun calculateTip() {
+    private fun calculateTip() {
         val stringInTextField = binding.costOfService.text.toString()
         val cost = stringInTextField.toDoubleOrNull()
             if (cost == null) {
@@ -30,9 +30,8 @@ class MainActivity : AppCompatActivity() {
             else -> 0.15
         }
         var tip = tipPercentage * cost
-        val roundUp = binding.roundUpSwitch.isChecked
-            if (roundUp) {
-            kotlin.math.ceil(tip)
+            if (binding.roundUpSwitch.isChecked) {
+            tip = kotlin.math.ceil(tip)
             }
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
